@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { setState } from 'expect/build/jestMatchersObject';
+
 
 // Exercise 1
 // Since Japanese is not everyboy's forte,
@@ -11,7 +13,7 @@ const Ex1 = function () {
     return (
         <div>
             <p>{text}</p>
-            <button onClick={() => { setText() /* Fix something here */ }}>
+            <button onClick={() => { setText('Hello World')  }}>
                 Translation please
             </button>
         </div>
@@ -24,13 +26,17 @@ const Ex1 = function () {
 // is displayed again
 
 const Ex2 = function () {
-    const text = ['Hello 世界', 'Hello World'];
+    const text = ['Hello 世界' ,'Hello World']
     const [idx, setIdx] = useState(0);
     return (
         <div>
             <p>{text[idx]}</p>
             <button onClick={() => {
-                /* Write some logic here */
+                if(idx === 0) {
+                    setIdx(1)
+                } else {
+                    setIdx(0)
+                }
             }}>
                 Translation please
             </button>
@@ -45,13 +51,17 @@ const Ex2 = function () {
 // it always changes the text to the other language (the text toggles)
 
 const Ex3 = function () {
-    const text = ['Hello 世界', 'Hello World', 'Dag Wereld', 'Bonjour le monde', 'Hallo Welt'];
+    const text = ['Hello 世界', 'Hello World', 'Hallo Wereld', 'Bonjour le monde', 'Hallo Welt'];
     const [idx, setIdx] = useState(0);
     return (
         <div>
             <p>{text[idx]}</p>
             <button onClick={() => {
-                /* Write some logic here */
+               if(idx < 4) {
+                   setIdx(idx+1)
+               } else {
+                   setIdx(0)
+               } /* Write some logic here */
             }}>
                 Translation please
             </button>
@@ -74,9 +84,13 @@ const Ex4 = function () {
         <div>
             <p>{text[idx]}</p>
             <button onClick={() => {
-                /* Write some logic here */
+                if(text[idx] === text[0]) {
+                    setIdx(1) 
+                } else {
+                    setIdx(0)
+                } /* Write some logic here */
             }}>
-                Translation to {/* Insert a variable here */} please
+                Translation to {lang[idx] } please
             </button>
         </div>
     )
@@ -93,7 +107,9 @@ const Ex5 = function () {
     return (
         <div>
             <p>{count}</p>
-            <button /* Add something here */>
+            <button onClick = {() => {
+                setCount(prevCount => prevCount + 1 )
+            }} >
                 Click me!
             </button>
         </div>
@@ -108,28 +124,36 @@ const Ex5 = function () {
 // No? too bad...
 
 const Ex6 = function () {
-    const [fib, setFib] = useState( /* Set the initial value of the state here */);
+    const [fib, setFib] = useState([0,1]);
+    const [idx,setIdx] =useState(0)
+    const handleFun = ()=>{
+        
+        if(fib.length===2){
+            const prev = fib[idx];
+            const nextFib = prev + fib[fib.length - 1]
+            setFib([nextFib,prev])
+        }
+    }
     return (
         <div>
-            <p>{/* The value you should put here is: `fib[0]`, but this will only work after you set the initial state */}</p>
-            <button onClick={() => { /* Write a function to update the state */ }}>
+            <p>{fib[idx]/* The value you should put here is: `fib[0]`, but this will only work after you set the initial state */}</p>
+            <button onClick={handleFun}/* Write a function to update the state */>
                 Click me!
             </button>
         </div>
     )
 };
 
-
 // Exercise 7
 // Update the p tag to reflect how many times a button was clicked
 // initial value should be 0
 
 const Ex7 = function () {
-    /* Init the state here */
+    const [muss, setMuss] = useState(0);/* Init the state here */
     return (
         <div>
-            <p>{/* Set a value here */}</p>
-            <button /* Add something here */>
+            <p>{muss/* Set a value here */}</p>
+            <button  onClick = {() => { setMuss(muss+1)}}/* Add something here */>
                 click me
             </button>
         </div>
@@ -146,17 +170,19 @@ const Ex7 = function () {
 // Set the p tag text to: "I like ..." where ... is the text value of the button
 
 const Ex8 = function () {
+    const [food, setFood] = useState("")
+
     /* init state and function to update it here */
     return (
         <div>
-            <p>I like {/* Add something here */}</p>
-            <button /* Add something here */>
+            <p>I like {food}</p>
+            <button  onClick = {() => {setFood('fruit')}} /* Add something here */>
                 fruit
             </button>
-            <button /* Add something here */>
+            <button onClick = {() => {setFood('meat')}} /* Add something here */>
                 meat
             </button>
-            <button /* Add something here */>
+            <button onClick = {() => {setFood('vegetables')}}/* Add something here */>
                 vegetables
             </button>
         </div>
@@ -175,14 +201,15 @@ const Ex8 = function () {
 // Append it to the initial 'Last click'
 
 const Ex9 = function () {
+   const [value, setValue] = useState('')
     /* init state and function to update it here */
     return (
         <div>
-            <p>Last click: {/* Add something here */}</p>
-            <button /* Add something here */>
+            <p>Last click: {value/* Add something here */}</p>
+            <button onClick = {() => {setValue('UPPER')}}/* Add something here */>
                 UPPER
             </button>
-            <button /* Add something here */>
+            <button  onClick = {() => {setValue('LOWER')}}/* Add something here */>
                 LOWER
             </button>
         </div>
@@ -200,14 +227,16 @@ const Ex9 = function () {
 
 const Ex10 = function () {
     const [items, setItems] = useState(['docker', 'kubernetes']);
+    console.log(items)
     return (
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   <li>{items}</li>
+                   /* render the items as an li here */
                 }
             </ul>
-            <button onClick={() => { /* Set the items here */  }}>
+            <button onClick={() => {setItems(['items'])  /* Set the items here */  }}>
                 Add element
             </button>
         </div>
