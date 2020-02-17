@@ -12,12 +12,13 @@ const ContactForm = () => {
     const [comment, setComment] = useState('');
     const [name, setName] = useState('');
     const [submittedText, setSubmittedText] = useState('');
-
+    
     const onSubmit = (event) => {
         event.preventDefault(); // We disable the default behaviour of a form
-        setSubmittedText(`Thanks for submitting ${name}`);
+        setSubmittedText(`Thanks for submitting ${name} `);
     };
-
+     
+     
     return (
         <section className="contact">
             { !submittedText && (
@@ -27,7 +28,7 @@ const ContactForm = () => {
                         <textarea
                             id="comment"
                             name="comment"
-                            onChange={(event) => { /* use event.target.value to set the comment */ }}
+                            onChange={(event) => {setComment(event.target.value) /* use event.target.value to set the comment */ }}
                         />
                     </div>
                     <div className="field">
@@ -37,7 +38,8 @@ const ContactForm = () => {
                             type="text"
                             name="name"
                             aria-label="contact-name"
-                            onChange={(event) => { /* use event.target.value to set the name */ }}
+                            onChange={(event) => { setName(event.target.value) /* use event.target.value to set the name */ }}
+                            
                         />
                     </div>
                     <button type="submit">Send it!</button>
@@ -58,9 +60,10 @@ const ContactForm = () => {
 const MathForm = () => {
     const [numberA, setNumberA] = useState(0);
     const [numberB, setNumberB] = useState(0);
-
+    
     // numberA and numberB are strings how can we force them to be numbers ?
-    const sum = numberA + numberB;
+    const sum = parseInt(numberA) + parseInt(numberB);
+    
 
     return (
         <section className="contact">
@@ -71,6 +74,7 @@ const MathForm = () => {
                         type="number"
                         name="numberA"
                         aria-label="math-number-a"
+                        onChange={(event) => { setNumberA(event.target.value) }}
                         /* add an attribute with value here that causes numberA to update when the input changes */
                     />
                     &nbsp; + &nbsp;
@@ -79,6 +83,7 @@ const MathForm = () => {
                         type="number"
                         name="numberA"
                         aria-label="math-number-b"
+                        onChange={(event) => { setNumberB(event.target.value) }}
                         /* add an attribute with value here that causes numberA to update when the input changes */
                     />
                 </div>
@@ -101,14 +106,16 @@ const FruitForm = () => {
     // Create the state variables and functions to update them
     const [fruits, setFruits] = useState([]);
     const [fruit, setFruit] = useState('');
+    
 
-    let error = false; /* Add an expression here that validates if fruit is a banana or apple */
+    let error = (fruit === 'banana' || fruit === 'apple')? false: true;
+    /*let error = false;  Add an expression here that validates if fruit is a banana or apple */
 
     const onSubmit = (event) => {
         event.preventDefault(); // We disable the default behaviour of a form
 
-        /* Only update the state of fruit if we have no errors */
-        setFruits([...fruits, fruit]);
+        (!error && setFruits([...fruits, fruit])); /* Only update the state of fruit if we have no errors */
+        
     };
 
     return (
