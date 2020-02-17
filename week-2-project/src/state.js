@@ -271,11 +271,13 @@ const Ex11 = function () {
         <div>
             <ul>
                 {
-                     /* render the items as an li here */
+                    items.map((e,i) => <li key={i}>{items[i]}</li>) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+               let newItems = default_list.slice(0, idx);
+               setItems(newItems);
+               setIdx(idx+1); /* update the state here */
             }}>
                 Add element
             </button>
@@ -302,7 +304,7 @@ const Ex12 = function ({base_list}) {
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                 /* update the state here */
             }}>
                 Add element
             </button>
@@ -327,16 +329,22 @@ const Ex13 = function () {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   items.map((e,i) => <li key={i}>{items[i]}</li>) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                const input = (idx < default_list.length)? idx+1 : idx;
+                setIdx(input);
+                const newItem = default_list.slice(0, input);
+                setItems(newItem); /* update the state here */
             }}>
                 Add element
             </button>
             <button onClick={() => {
-                /* update the state here */
+               const input = (idx-1 < 0)? 0 : idx-1;
+               setIdx(input);
+               let newItem = default_list.slice(0, input);
+               setItems(newItem); /* update the state here */
             }}>
                 Remove element
             </button>
@@ -357,7 +365,7 @@ const Ex14 = function ({base_list}) {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                     /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
