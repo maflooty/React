@@ -227,16 +227,19 @@ const Ex9 = function () {
 
 const Ex10 = function () {
     const [items, setItems] = useState(['docker', 'kubernetes']);
-    console.log(items)
+    const value = items.map((item)=>{
+        return <li>{item}</li>
+    })
     return (
         <div>
             <ul>
                 {
-                   <li>{items}</li>
+                   <li>{value}</li>
                    /* render the items as an li here */
                 }
             </ul>
-            <button onClick={() => {setItems(['items'])  /* Set the items here */  }}>
+            <button onClick={() => { setItems(['docker', 'kubernetes', 'containerd']) 
+                 }  /* Set the items here */  }>
                 Add element
             </button>
         </div>
@@ -263,11 +266,12 @@ const Ex11 = function () {
     const default_list = ['ipsizzle', 'nullizzle', 'sapizzle', 'velizzle', 'crackalackin', 'maurizzle', 'rhoncizzle'];
     const [items, setItems] = useState([]);
     const [idx, setIdx] = useState(1);
+    
     return (
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                     /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
