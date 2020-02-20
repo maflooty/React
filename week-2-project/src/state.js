@@ -234,20 +234,12 @@ const Ex10 = function () {
         <div>
             <ul>
                 {
-<<<<<<< HEAD
-                   
-                   /* render the items as an li here */
-                }
-            </ul>
-            <button onClick={() => {  /* Set the items here */  }}>
-=======
                    <li>{value}</li>
                    /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => { setItems(['docker', 'kubernetes', 'containerd']) 
                  }  /* Set the items here */  }>
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
                 Add element
             </button>
         </div>
@@ -279,22 +271,12 @@ const Ex11 = function () {
         <div>
             <ul>
                 {
-<<<<<<< HEAD
                    items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
                  setIdx(idx+1)
                  setItems(default_list.slice(0, idx)) /* update the state here */
-=======
-                    items.map((e,i) => <li key={i}>{items[i]}</li>) /* render the items as an li here */
-                }
-            </ul>
-            <button onClick={() => {
-               let newItems = default_list.slice(0, idx);
-               setItems(newItems);
-               setIdx(idx+1); /* update the state here */
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
             }}>
                 Add element
             </button>
@@ -321,12 +303,8 @@ const Ex12 = function ({base_list}) {
                 }
             </ul>
             <button onClick={() => {
-<<<<<<< HEAD
                 setIdx(idx+1)
                 setItems(base_list.slice(0, idx)) /* update the state here */
-=======
-                 /* update the state here */
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
             }}>
                 Add element
             </button>
@@ -351,36 +329,18 @@ const Ex13 = function () {
         <div>
             <ul>
                 {
-<<<<<<< HEAD
                    items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
                 setIdx(idx+1)
                 setItems(default_list.slice(0, idx))/* update the state here */
-=======
-                   items.map((e,i) => <li key={i}>{items[i]}</li>) /* render the items as an li here */
-                }
-            </ul>
-            <button onClick={() => {
-                const input = (idx < default_list.length)? idx+1 : idx;
-                setIdx(input);
-                const newItem = default_list.slice(0, input);
-                setItems(newItem); /* update the state here */
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
             }}>
                 Add element
             </button>
             <button onClick={() => {
-<<<<<<< HEAD
                setIdx(idx-1)
                setItems(default_list.slice(0, idx)) /* update the state here */
-=======
-               const input = (idx-1 < 0)? 0 : idx-1;
-               setIdx(input);
-               let newItem = default_list.slice(0, input);
-               setItems(newItem); /* update the state here */
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
             }}>
                 Remove element
             </button>
@@ -401,11 +361,7 @@ const Ex14 = function ({base_list}) {
         <div>
             <ul>
                 {
-<<<<<<< HEAD
                    items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
-=======
-                     /* render the items as an li here */
->>>>>>> 1bd663a79643dbbd4cb1007b4dd2d6c1b3aa73f0
                 }
             </ul>
             <button onClick={() => {
