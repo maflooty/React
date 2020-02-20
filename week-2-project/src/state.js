@@ -232,11 +232,11 @@ const Ex10 = function () {
         <div>
             <ul>
                 {
-                   <li>{items}</li>
+                   
                    /* render the items as an li here */
                 }
             </ul>
-            <button onClick={() => {setItems(['items'])  /* Set the items here */  }}>
+            <button onClick={() => {  /* Set the items here */  }}>
                 Add element
             </button>
         </div>
@@ -267,11 +267,12 @@ const Ex11 = function () {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                 setIdx(idx+1)
+                 setItems(default_list.slice(0, idx)) /* update the state here */
             }}>
                 Add element
             </button>
@@ -294,11 +295,12 @@ const Ex12 = function ({base_list}) {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                setIdx(idx+1)
+                setItems(base_list.slice(0, idx)) /* update the state here */
             }}>
                 Add element
             </button>
@@ -323,16 +325,18 @@ const Ex13 = function () {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                setIdx(idx+1)
+                setItems(default_list.slice(0, idx))/* update the state here */
             }}>
                 Add element
             </button>
             <button onClick={() => {
-                /* update the state here */
+               setIdx(idx-1)
+               setItems(default_list.slice(0, idx)) /* update the state here */
             }}>
                 Remove element
             </button>
@@ -353,16 +357,18 @@ const Ex14 = function ({base_list}) {
         <div>
             <ul>
                 {
-                    /* render the items as an li here */
+                   items.map((item, idx) => <li key={idx}>{item}</li> ) /* render the items as an li here */
                 }
             </ul>
             <button onClick={() => {
-                /* update the state here */
+                 setIdx(idx+1)
+                 setItems(base_list.slice(0, idx))/* update the state here */
             }}>
                 Add element
             </button>
             <button onClick={() => {
-                /* update the state here */
+                setIdx(idx-1)
+                setItems(base_list.slice(0, idx))/* update the state here */
             }}>
                 Remove element
             </button>
