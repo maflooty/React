@@ -4,7 +4,7 @@ import './communication.css';
 
 // Exercise: InterActive Fruits
 // Instruct the fruits in our grid to activate certain animations
-// TODO: make sure to pass the intent to bounce and rotate to the child components
+// TODO: make sure to pass the intent to bounce and rotate to the child components..
 
 const InterActiveFruits = () => {
     const rows = 4;
@@ -12,7 +12,9 @@ const InterActiveFruits = () => {
     const fruits = ['banana', 'apple'];
 
     const [grid, setGrid] = useState([]);
-
+    const [bounce, setBounce] = useState(false);
+    const [rotate, setRotate] = useState(false);
+   
     // On click generate a grid of fruits
     const handleGenerateClick = () => {
         const grid = [];
@@ -30,6 +32,26 @@ const InterActiveFruits = () => {
         // Update the state
         setGrid(grid);
     };
+    
+    const handleBounceClick = () => {
+            if (bounce==false) {
+                setBounce(true);
+            }
+            else {
+                setBounce(false);
+            }
+        };console.log(bounce)
+
+    const handleRotateClick = () => {
+        if (rotate===false) {
+           setRotate(true);
+           
+        }
+         else {
+            setRotate(false);
+        }
+    }   
+    
 
     return (
         <section>
@@ -42,9 +64,9 @@ const InterActiveFruits = () => {
                                 {
                                     row.map((fruit, columnIndex) => {return (
                                         <td key={`${rowIndex}_${columnIndex}_${fruit}`}>
-                                            {/* TODO: Add state variables for bounce and rotate, assign them here */}
-                                            <InterActiveFruit key={`${rowIndex}_${columnIndex}_${fruit}`} name={fruit} bounce={false} rotate={false} />
-                                        </td>
+                                            { /* TODO: Add state variables for bounce and rotate, assign them here */}
+                                            <InterActiveFruit key={`${rowIndex}_${columnIndex}_${fruit}`} name={fruit} bounce={bounce} rotate={rotate} />
+                                        </td> 
                                     )})
                                 }
                             </tr>
@@ -55,15 +77,15 @@ const InterActiveFruits = () => {
             </table>
             <button onClick={handleGenerateClick}>Generate</button>
             {/* TODO: Add a click handler for bounce and rotate */}
-            <button>Bounce</button>
-            <button>Rotate</button>
+            <button onClick={handleBounceClick}>Bounce</button>
+            <button onClick={handleRotateClick}>Rotate</button>
         </section>
     )
 };
 
 const InterActiveFruit = ({ name, bounce, rotate }) => {
     const [position, setPosition] = useState([]);
-
+  
     // Just some fun on click let the animation fly of screen
     const handleClick = () => {
         const angle = Math.floor(Math.random() * 360);
@@ -122,14 +144,14 @@ const InterActiveFruit = ({ name, bounce, rotate }) => {
 
 const FruitApp = () => {
     const [fruits, setFruits] = useState([]);
-
+    
     const onSubmit = () => {
-        /* update the fruits here */
+        setFruits([fruits]) /* update the fruits here */
     };
 
     return (
         <section className={'fruit'}>
-            <FruitForm onSubmitHandler={onSubmit} />
+            <FruitForm onSubmitHandler={onSubmit}  />
             <FruitList fruits={fruits} />
         </section>
     )
@@ -157,7 +179,7 @@ const Fruit = ({ name }) => {
     return <span data-testid="fruit">{fruitMoji}</span>
 };
 
-const FruitForm = ({ onSubmitHandler }) => {
+const FruitForm = ({ onSubmitHandler}) => {
     const [fruit, setFruit] = useState('');
 
     const isValidFruit = (fruitInput) => {
@@ -171,12 +193,11 @@ const FruitForm = ({ onSubmitHandler }) => {
             onSubmitHandler(fruit)
         }
     };
-
     return (
         <section className="contact">
             <form onSubmit={onSubmit}>
                 <div className="field">
-                    <label htmlFor="email">Banana or Apple</label> <br />
+                    <label htmlFor="email">Banana or Apple </label> <br />
                     <input
                         id="name"
                         type="text"
@@ -201,14 +222,15 @@ const FruitAppWithBalance = () => {
     const [fruits, setFruits] = useState([]);
 
     const onSubmitHandler = (fruit) => {
-        /* update the fruits here */
+        
+          setFruits([fruits]); /* update the fruits here */
     };
 
     return (
         <section className={'fruit'}>
             <FruitForm onSubmitHandler={onSubmitHandler} />
             <FruitList fruits={fruits} />
-            /* Render the component FruitBalance here with the correct prop */
+            <FruitBalance fruits={fruits} />/* Render the component FruitBalance here with the correct prop */
         </section>
     )
 };
