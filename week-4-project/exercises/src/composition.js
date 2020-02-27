@@ -17,10 +17,10 @@ const ColoredSection = ({ children }) => {
     // Move the children props to the correct location
     return (
         <div>
-            <div style={{backgroundColor: 'pink'}}>
+            <div style={{backgroundColor: 'pink'}}>{children}
             </div>
             <div style={{backgroundColor: 'yellow'}}>
-                {children}
+                
             </div>
         </div>
     )
@@ -47,8 +47,8 @@ const Comp2 = () => {
 const ListItem = ({ item, children }) => {
     return (
         <li>
-            {item}
             {children}
+            {item}
         </li>
     )
 };
